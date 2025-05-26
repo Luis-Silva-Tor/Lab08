@@ -2,45 +2,42 @@ package avltree;
 
 public class TestAVL {
     public static void main(String[] args) {
-        AVLTree<Integer> avl = new AVLTree<>(); // Crea árbol AVL
-        BSTree<Integer> bst = new BSTree<>();   // Crea árbol binario de búsqueda normal
+        AVLTree<Integer> tree = new AVLTree<>();
 
         try {
-            //  Comparación entre AVL y BST con los mismos datos
-            int[] datos = {10, 20, 30, 40, 50, 60}; // Datos en orden creciente
-            for (int x : datos) {
-                avl.insert(x); // Inserta en AVL se balancea automáticamente
-                bst.insert(x); // Inserta en BST sin balanceo
-            }
+            // RSR #1
+            tree.insert(50);
+            tree.insert(40);
+            tree.insert(30); // Rotación simple derecha en 50
 
-            // Muestra recorrido inOrder del BST puede estar desbalanceado
-            System.out.print("BST inOrder: ");
-            bst.inOrder();
+            // RSR #2
+            tree.insert(25);
+            tree.insert(20); // Rotación simple derecha en 30
 
-            // Muestra recorrido inOrder del AVL debe estar balanceado
-            System.out.print("AVL inOrder: ");
-            avl.inOrder();
+            // RSL #1
+            tree.insert(60);
+            tree.insert(70); // Rotación simple izquierda en 60
 
-            //  Inserción adicional para probar 8 casos de rotación en AVL
-            avl = new AVLTree<>(); // Nuevo árbol AVL vacío
-            int[] pruebas = {50, 40, 30, 25, 20, 60, 70, 80, 22, 35, 65, 75}; // Datos diseñados para provocar rotaciones
-            for (int x : pruebas) avl.insert(x); // Inserta en AVL
+            // RSL #2
+            tree.insert(80); // Rotación simple izquierda en 70
 
-            // Muestra recorrido inOrder del AVL resultante
-            System.out.print("AVL Final inOrder: ");
-            avl.inOrder();
+            // RDL #1
+            tree.insert(22); // Rotación doble izquierda-derecha en 25
 
-            //  Muestra recorrido preOrder (útil para ver estructura del árbol)
-            System.out.print("AVL PreOrder: ");
-            avl.preOrder();
+            // RDL #2
+            tree.insert(35); // Rotación doble izquierda-derecha en 40
 
-            // Muestra recorrido BFS por niveles (nivel por nivel)
-            System.out.print("AVL BFS por niveles: ");
-            avl.bfs();
+            // RDR #1
+            tree.insert(65); // Rotación doble derecha-izquierda en 60
+
+            // RDR #2
+            tree.insert(75); // Rotación doble derecha-izquierda en 70
 
         } catch (ItemDuplicated e) {
-            // Captura e imprime mensaje si se intenta insertar duplicados
             System.out.println("Error: " + e.getMessage());
         }
+
+        System.out.println("Recorrido inOrder:");
+        tree.inOrder(); // Debería imprimir los valores ordenados
     }
 }

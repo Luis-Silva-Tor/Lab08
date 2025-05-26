@@ -1,36 +1,29 @@
 package avltree;
 
-/**
- * Clase BSTree que implementa un Árbol Binario de Búsqueda (Binary Search Tree).
- * @param <E> tipo de dato genérico que debe ser comparable.
- */
+//clase BSTree que implementa un Árbol Binario de Búsqueda (Binary Search Tree).
+ 
 public class BSTree<E extends Comparable<E>> {
 
     // Nodo raíz del árbol
     protected Node<E> root;
 
-    /**
-     * Constructor que inicializa el árbol vacío.
-     */
+    
+    // Constructor que inicializa el árbol vacío.
+     
     public BSTree() {
         root = null;
     }
 
-    /**
-     * Método público para insertar un nuevo dato en el árbol.
-     * @param data Dato a insertar.
-     * @throws ItemDuplicated Excepción si el dato ya existe en el árbol.
-     */
+  
+    // Método público para insertar un nuevo dato en el árbol.
+     
     public void insert(E data) throws ItemDuplicated {
         root = insert(root, data);
     }
 
-    /**
-     * Método auxiliar recursivo que inserta un nuevo dato en el árbol.
-     * @param node Nodo actual desde donde se realiza la búsqueda.
-     * @param data Dato a insertar.
-     * @return Nodo raíz actualizado del subárbol.
-     */
+  
+     // auxiliar recursivo que inserta un nuevo dato en el árbol.
+
     protected Node<E> insert(Node<E> node, E data) {
         if (node == null) return new Node<>(data);
 
@@ -46,18 +39,17 @@ public class BSTree<E extends Comparable<E>> {
         return node;
     }
 
-    /**
-     * Realiza un recorrido inorden (izquierda, raíz, derecha) del árbol.
-     * Imprime los elementos en orden ascendente.
-     */
+   // Realiza un recorrido inorden izquierda, raíz, derecha del árbol.
+
+     
     public void inOrder() {
         inOrder(root);
         System.out.println();
     }
 
     /**
-     * Método auxiliar recursivo para el recorrido inorden.
-     * @param node Nodo actual desde donde se realiza el recorrido.
+     * auxiliar recursivo para el recorrido inorden.
+    
      */
     private void inOrder(Node<E> node) {
         if (node != null) {
